@@ -10,12 +10,12 @@ const USERS = [
 
 async function seed() {
   try {
-    console.log('🔁 Seed 시작...');
+    console.log('Seed 시작...');
 
     // 회원가입
     for (const u of USERS) {
       await axios.post(`${GATEWAY}/auth/signup`, u);
-      console.log(`✅ ${u.role} 가입 완료: ${u.username}`);
+      console.log(`${u.role} 가입 완료: ${u.username}`);
     }
 
     // 로그인 & 토큰 획득
@@ -26,7 +26,7 @@ async function seed() {
         password: u.password,
       });
       tokens[u.role] = res.data.access_token;
-      console.log(`🔑 ${u.role} 로그인 완료 → token 저장 → tokens['${u.role}']`);
+      console.log(`${u.role} 로그인 완료 → token 저장 → tokens['${u.role}']`);
     }
 
     // 이벤트 생성 (Operator로)
